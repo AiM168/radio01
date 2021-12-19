@@ -1,0 +1,30 @@
+<header>
+  <center>匿名ラジオ名言検索</center>
+  <div class="search-form">
+    <%= form_tag '/radios/search', method: :post do %>
+      <p><center><%= text_field_tag :keyword %><%= submit_tag "検索" %></center></p>
+    <% end %>
+  </div>
+  
+
+</header>
+
+  <%= image_tag "/myapp/app/assets/images/character_ebi_fry.png" %>
+
+<br>
+
+<div class="radio-list">
+  <% @radios.each do |radio| %>
+    <p>
+      <%= link_to radio.text,radio.url %>
+      <%= link_to '削除',"/radios/#{radio.id}", method: :delete %>
+    </p>
+  <% end %>
+</div>
+
+<footer>
+  <center><a><%= link_to '新規追加', '/radios/new' %></a></center>
+    <div class="random-show">
+    <center><a><%= link_to 'ランダム', "/radios/show" %></a></center>
+  </div>
+</footer>
